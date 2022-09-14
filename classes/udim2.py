@@ -1,26 +1,26 @@
-from typing import Tuple
+from pygame import Vector2
 
 class udim2:
-    scaleX: int
-    offsetX: int
-    scaleY: int
-    offsetY: int
-    def __init__(self, sx: int, ox: int, sy: int, oy: int):
-        self.scaleX = int(sx);
-        self.offsetX = int(ox);
-        self.scaleY = int(sy);
-        self.offsetY = int(oy);
-
-    def toScale(self) -> Tuple[int, int]:
-        return (self.scaleX, self.scaleY);
-
-    def toOffset(self) -> Tuple[int, int]:
-        return (self.offsetX, self.offsetY);
+    xScale: float = 0
+    yScale: float = 0
+    xOffset: float = 0
+    yOffset: float = 0
+    def __init__(self, xOffset: float = 0, xScale: float = 0, yOffset: float = 0, yScale: float = 0):
+        self.xOffset = xOffset
+        self.xScale = xScale
+        self.yOffset = yOffset
+        self.yScale = yScale
 
     @staticmethod
-    def fromScale(sx: int, sy: int):
-        return udim2(sx, 0, sy, 0);
+    def fromScale(xScale: float = 0, yScale: float = 0):
+        return udim2(0, xScale, 0, yScale)
 
     @staticmethod
-    def fromOffset(ox: int, oy: int):
-        return udim2(0, ox, 0, oy);
+    def fromOffset(xOffset: float = 0, yOffset: float = 0):
+        return udim2(xOffset, 0, yOffset, 0)
+
+    def toScale(self):
+        return Vector2(self.xScale, self.yScale)
+
+    def toOffset(self):
+        return Vector2(self.xOffset, self.yOffset)
