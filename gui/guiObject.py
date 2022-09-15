@@ -1,4 +1,5 @@
 from classes.color4 import color4
+from classes.sharedUtil import create_neon
 from client.renderer import gameLoop
 from gui.guiDefaultProperties import LoadDefaultGuiProperties
 from gui.instance import instance
@@ -67,6 +68,8 @@ class guiObject(instance):
 
         screen = gameLoop.getRenderer().screen
 
+        #background
+
         (bgPosition, bgSize) = self.getSizeAndPositionFromUdim2(self.position, self.size)
 
         backgroundRect = pygame.Rect(bgPosition.x, bgPosition.y, bgSize.x, bgSize.y)
@@ -75,17 +78,23 @@ class guiObject(instance):
 
         backSurf.fill(self.backgroundColor.toRGBTuple())
 
+        backSurf.set_alpha(int((1 - self.backgroundTransparency) * 255))
+
+        #border
+
         borderRect = pygame.Rect(bgPosition.x, bgPosition.y, bgSize.x + 5, bgSize.y + 5)
 
-        borderSurf = pygame.Surface(borderRect.size)
+        borderSurf = pygame.Surface(borderRect.size, pygame.SRCALPHA)
 
         borderSurf.fill((0, 255, 0))
 
-        backSurf.set_alpha(int((1 - self.backgroundTransparency) * 255))
+        ns = create_neon(borderSurf)
 
         #blit borderSurf before backSurf, so it is below
 
         #currently looks like a dropshadow, offset it?
+
+        screen.blit(ns, borderRect.center, special_flags = pygame.BLEND_PREMULTIPLIED)
 
         screen.blit(borderSurf, borderRect.center)
 
