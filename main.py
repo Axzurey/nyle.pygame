@@ -11,7 +11,7 @@ gameLoop.setRenderer(mainRenderer)
 
 frame = guiObject()
 
-frame.backgroundColor = color4.fromRGB(0, 255, 255)
+frame.backgroundColor = color4.fromRGB(0, 255, 255, 200)
 
 frame.size = udim2(260, 0, 100, 0)
 

@@ -18,11 +18,14 @@ class guiObject(instance):
     rotation: float
     
     color: color4
+
     backgroundColor: color4
 
     borderWidth: int
+    borderColor: color4
 
-    backgroundTransparency: float
+    dropShadowColor: color4
+    dropShadowRadius: int
 
     def __init__(self):
         super()
@@ -78,23 +81,25 @@ class guiObject(instance):
 
         backSurf.fill(self.backgroundColor.toRGBTuple())
 
-        backSurf.set_alpha(int((1 - self.backgroundTransparency) * 255))
+        #backSurf.set_alpha(int((1 - self.backgroundTransparency) * 255))
 
         #border
 
-        borderRect = pygame.Rect(bgPosition.x, bgPosition.y, bgSize.x + 5, bgSize.y + 5)
+        borderRect = pygame.Rect(bgPosition.x - self.borderWidth, bgPosition.y - self.borderWidth, bgSize.x + self.borderWidth, bgSize.y + self.borderWidth)
 
         borderSurf = pygame.Surface(borderRect.size, pygame.SRCALPHA)
 
-        borderSurf.fill((0, 255, 0))
+        borderSurf.fill(self.borderColor.toRGBATuple())
 
-        ns = create_neon(borderSurf)
+        dropShadowSurface = pygame.Surface((100, 100), pygame.SRCALPHA)
 
-        #blit borderSurf before backSurf, so it is below
+        dropNeonRect = pygame.Rect(bgPosition.x - self.dropShadowRadius, bgPosition.y - self.dropShadowRadius, bgSize.x + self.dropShadowRadius, bgSize.y + self.dropShadowRadius)
 
-        #currently looks like a dropshadow, offset it?
+        pygame.draw.rect(dropShadowSurface, (255, 0, 255), dropNeonRect)
 
-        screen.blit(ns, borderRect.center, special_flags = pygame.BLEND_PREMULTIPLIED)
+        dropNeonSurface = create_neon(dropShadowSurface)
+
+        screen.blit(dropNeonSurface, borderRect.center, special_flags = pygame.BLEND_PREMULTIPLIED)
 
         screen.blit(borderSurf, borderRect.center)
 
