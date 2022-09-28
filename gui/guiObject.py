@@ -17,11 +17,15 @@ class guiObject(instance):
     rotation: float
     
     color: color4
+    
     backgroundColor: color4
+    backgroundTransparency: float
 
     borderWidth: int
+    borderColor: color4
 
-    backgroundTransparency: float
+    dropShadowRadius: float
+    dropShadowColor: color4
 
     def __init__(self):
         super()
@@ -75,11 +79,14 @@ class guiObject(instance):
 
         backSurf.fill(self.backgroundColor.toRGBTuple())
 
-        borderRect = pygame.Rect(bgPosition.x, bgPosition.y, bgSize.x + 5, bgSize.y + 5)
+        borderRect = pygame.Rect(
+            bgPosition.x - self.borderWidth, 
+            bgPosition.y - self.borderWidth, 
+            bgSize.x + self.borderWidth, bgSize.y + self.borderWidth)
 
         borderSurf = pygame.Surface(borderRect.size)
 
-        borderSurf.fill((0, 255, 0))
+        borderSurf.fill(self.borderColor.toRGBTuple())
 
         backSurf.set_alpha(int((1 - self.backgroundTransparency) * 255))
 

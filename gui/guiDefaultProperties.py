@@ -8,13 +8,15 @@ GUI_DEFAULT_PROPERTIES = {
     "color": lambda: color4(0, 1, 0),
     "backgroundColor": lambda: color4(1, 1, 0),
     "backgroundTransparency": lambda: 0,
-    "borderColor": lambda: color4(1, 0, 1),
-    "borderTransparency": lambda: 0
+    "borderColor": lambda: color4(1, 1, 1),
+    "borderTransparency": lambda: 0,
+    "dropShadowRadius": lambda: 10,
+    "dropShadowColor": lambda: color4(.7, .7, .7)
 }
 
 GUI_PROPERTY_MAP = {
     "guiObject": ["size", "position", "backgroundColor", "backgroundTransparency",
-        "borderColor", "borderTransparency"
+        "borderColor", "borderTransparency", "dropShadowRadius", "dropShadowColor"
     ]
 }
 
