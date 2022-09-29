@@ -5,13 +5,13 @@ import pygame
 
 from gui.guiObject import guiObject
 
-mainRenderer = renderer(pygame.Vector2(1000, 700), 0, color4())
+mainRenderer = renderer(pygame.Vector2(1000, 700), 0, color4(1, 1, 1))
 
 gameLoop.setRenderer(mainRenderer)
 
 frame = guiObject()
 
-frame.backgroundColor = color4.fromRGB(0, 255, 255, 200)
+frame.backgroundColor = color4.fromRGBA(0, 255, 255, 200)
 
 frame.size = udim2(260, 0, 100, 0)
 

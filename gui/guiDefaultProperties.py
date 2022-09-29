@@ -1,21 +1,29 @@
+import pygame
 from classes.color4 import color4
 from classes.udim2 import udim2
 from gui.instance import instance
 
 GUI_DEFAULT_PROPERTIES = {
+    "absoluteSize": lambda: pygame.Vector2(),
+    "absolutePosition": lambda: pygame.Vector2(),
     "size": lambda: udim2.fromOffset(150, 50),
     "position": lambda: udim2.fromOffset(0, 0),
     "color": lambda: color4(0, 1, 0),
     "backgroundColor": lambda: color4(1, 1, 0),
     "borderColor": lambda: color4(1, 0, 1),
-    "borderRadius": lambda: 0,
-    "dropShadowColor": lambda: color4(.7, .7, .7),
-    "dropShadowRadius": lambda: 10
+    "borderRadius": lambda: udim2.fromOffset(15, 15),
+    "borderWidth": lambda: 5,
+    "dropShadowColor": lambda: color4(.2, .2, .2),
+    "dropShadowRadius": lambda: 5,
+    "dropShadowOffset": lambda: udim2.fromOffset(5, 5)
 }
 
 GUI_PROPERTY_MAP = {
-    "guiObject": ["size", "position", "backgroundColor",
-        "borderColor", "dropShadowColor", "dropShadowRadius"
+    "guiObject": [
+        "size", "position", "backgroundColor",
+        "borderColor", "borderWidth", "dropShadowColor", 
+        "dropShadowRadius", "dropShadowOffset", "absolutePosition",
+        "absoluteSize"
     ]
 }
 
