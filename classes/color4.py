@@ -22,7 +22,16 @@ class color4:
     def fromRGB(r: float, g: float, b: float):
         (r, g, b) = clampAll(0, 255, r, g, b);
 
-        return color4(r / 255, g / 255, b / 255);
+        return color4(r / 255, g / 255, b / 255)
+
+    @staticmethod
+    def fromRGBA(r: float, g: float, b: float, a: float):
+        (r, g, b, a) = clampAll(0, 255, r, g, b, a);
+
+        return color4(r / 255, g / 255, b / 255, a / 255)
+
+    def toRGBATuple(self) -> Tuple[int, int, int, int]:
+        return (int(self.r * 255), int(self.g) * 255, int(self.b * 255), int(self.a * 255))
 
     def toRGBTuple(self) -> Tuple[int, int, int]:
         return (int(self.r * 255), int(self.g * 255), int(self.b * 255))
