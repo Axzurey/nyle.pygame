@@ -10,18 +10,6 @@ GUI_DEFAULT_PROPERTIES = {
     "position": lambda: udim2.fromOffset(0, 0),
     "color": lambda: color4(0, 1, 0),
     "backgroundColor": lambda: color4(1, 1, 0),
-<<<<<<< HEAD
-    "backgroundTransparency": lambda: 0,
-    "borderColor": lambda: color4(1, 1, 1),
-    "borderTransparency": lambda: 0,
-    "dropShadowRadius": lambda: 10,
-    "dropShadowColor": lambda: color4(.7, .7, .7)
-}
-
-GUI_PROPERTY_MAP = {
-    "guiObject": ["size", "position", "backgroundColor", "backgroundTransparency",
-        "borderColor", "borderTransparency", "dropShadowRadius", "dropShadowColor"
-=======
     "borderColor": lambda: color4(1, 0, 1),
     "borderRadius": lambda: udim2.fromOffset(15, 15),
     "borderWidth": lambda: 5,
@@ -36,7 +24,6 @@ GUI_PROPERTY_MAP = {
         "borderColor", "borderWidth", "dropShadowColor", 
         "dropShadowRadius", "dropShadowOffset", "absolutePosition",
         "absoluteSize"
->>>>>>> 174627bd1dfe773de1d9c105d3b14053aa50a37f
     ]
 }
 

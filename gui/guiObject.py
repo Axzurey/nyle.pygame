@@ -18,27 +18,16 @@ class guiObject(instance):
     rotation: float
     
     color: color4
-<<<<<<< HEAD
-    
-=======
-
->>>>>>> 174627bd1dfe773de1d9c105d3b14053aa50a37f
     backgroundColor: color4
     backgroundTransparency: float
 
     borderWidth: int
     borderColor: color4
-<<<<<<< HEAD
-
-    dropShadowRadius: float
-    dropShadowColor: color4
-=======
     borderRadius: udim2
 
     dropShadowColor: color4
     dropShadowRadius: int
     dropShadowOffset: udim2
->>>>>>> 174627bd1dfe773de1d9c105d3b14053aa50a37f
 
     def __init__(self):
         super()
@@ -107,20 +96,6 @@ class guiObject(instance):
 
         backSurf.fill(self.backgroundColor.toRGBTuple())
 
-<<<<<<< HEAD
-        borderRect = pygame.Rect(
-            bgPosition.x - self.borderWidth, 
-            bgPosition.y - self.borderWidth, 
-            bgSize.x + self.borderWidth, bgSize.y + self.borderWidth)
-
-        borderSurf = pygame.Surface(borderRect.size)
-
-        borderSurf.fill(self.borderColor.toRGBTuple())
-
-        backSurf.set_alpha(int((1 - self.backgroundTransparency) * 255))
-
-        #blit borderSurf before backSurf, so it is below
-=======
         #backSurf.set_alpha(int((1 - self.backgroundTransparency) * 255))
 
         #border
@@ -134,13 +109,10 @@ class guiObject(instance):
         dropShadowSurface = pygame.Surface(Vector2(1920, 1080), pygame.SRCALPHA)
 
         dropOffset = self.udim2RelativeToSelfSize(self.dropShadowOffset, 'xx')
->>>>>>> 174627bd1dfe773de1d9c105d3b14053aa50a37f
 
         dropPos = Vector2(bgPosition.x - self.dropShadowRadius + dropOffset.x,
             bgPosition.y - self.dropShadowRadius + dropOffset.y)
 
-<<<<<<< HEAD
-=======
         dropSize = Vector2(bgSize.x + self.dropShadowRadius,
             bgSize.y + self.dropShadowRadius)
 
@@ -157,7 +129,6 @@ class guiObject(instance):
 
         screen.blit(dropNeonSurface, (0, 0), special_flags = pygame.BLEND_PREMULTIPLIED)
 
->>>>>>> 174627bd1dfe773de1d9c105d3b14053aa50a37f
         screen.blit(borderSurf, borderRect.center)
 
         screen.blit(backSurf, backgroundRect.center)
